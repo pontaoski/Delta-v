@@ -1,11 +1,9 @@
-using Content.Shared._DV.Surgery;
-using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared.Armor;
 using Content.Shared.Inventory;
 
-namespace Content.Server._DV.Surgery;
+namespace Content.Shared._Shitmed.Medical.Surgery;
 
-public sealed partial class SurgeryGlovesSpeedSystem : EntitySystem
+public sealed partial class SurgerySpeedModifierSystem : EntitySystem
 {
     public override void Initialize()
     {

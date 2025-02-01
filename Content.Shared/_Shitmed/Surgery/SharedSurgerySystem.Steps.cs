@@ -784,11 +784,11 @@ public abstract partial class SharedSurgerySystem
         if (TryComp(user, out SurgerySpeedModifierComponent? surgerySpeedMod))
             speed *= surgerySpeedMod.SpeedModifier;
 
-        // Begin Delta-V: surgery speed modifiers on equipment
-        var ev = new Content.Shared._DV.Surgery.SurgerySpeedModifyEvent(1f);
-        RaiseLocalEvent(user, ev);
+        var ev = new SurgerySpeedModifyEvent(1f);
+        RaiseLocalEvent(user, ref ev);
+        if (TryComp<InventoryComponent>(user, out var inv))
+            _inventory.RelayEvent((user, inv), ref ev);
         speed = ev.Multiplier;
-        // End Delta-V: surgery speed modifiers on equipment
 
         return stepComp.Duration / speed;
     }
